@@ -1,0 +1,231 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package todoubledemo;
+
+/**
+ *
+ * @author IlDivinoPase
+ */
+
+//ordine dei metodi per ottenere, da una stringa, il numero effettivo: distruggiLettere, toInt, numeroEffettivo
+public final class toInt {
+    
+    private int integer;
+        
+    public static final int stringToNumber(String stringaNumerica)//metodo che va utilizzato per convertire una String in un Int
+    {
+        char[] array=stringaNumerica.toCharArray();//convertito in un array perché i metodi che ho scritto operavano su di un array
+        array=distruggiLettere(array);//distrugge le lettere e gli spazi
+        int numeroTotale=toInt(array);//returna il numero finale
+        return numeroTotale;
+    }
+    
+    public static final String numberToString(int numero)//metodo che converte una variabile int in una stringa
+    {
+        return ""+numero;
+    }
+    
+    public static final int[] dividiNumero(int numero)//restituisce un array di interi che é composto dalle cifre del nuemero
+    {
+        int[] arrayInteri=new int[getQuantitaCifre(numero)];//array di interi di dimensioni pari al numero di cifre del numero 
+        
+        int numeroDaInserire;
+        
+        for(int i=0;i<arrayInteri.length;i++)
+        {
+            int numeroDivisorio=1;//viene inizializzato qui cosí che almeno ogni volta torni ad 1 il risultato e numeroDivisorio possa poi assumere il numero che vogliamo
+            
+            for(int j=i;j<arrayInteri.length-1;j++)
+            {
+                numeroDivisorio*=10;
+            }
+            
+            numeroDaInserire=numero/numeroDivisorio;//Il numero da inserire sará il numero/numeroDivisorio, ed essendo tutto int verrá approssimato all'intero
+            numero=numero%numeroDivisorio;//numero diventerá uguale al resto, cosí che si possa procedere con i prossimi numeri restanti
+            arrayInteri[i]=numeroDaInserire;//numero inseirito
+        }
+        
+        return arrayInteri;
+    }
+    
+    private static int getQuantitaCifre(int numero)//restituisce la quantita di cifre di un numero, testato, funziona
+    {
+        double numeroDaDividere=numero;
+        int quantitaCifre=0;
+        
+        while(numeroDaDividere>=1)
+        {
+            numeroDaDividere/=10;
+            quantitaCifre++;
+        }
+        
+        return quantitaCifre;
+        
+    }
+    
+    
+    public toInt()
+    {
+        integer=0;
+    }
+    
+    public toInt(int a)
+    {
+        integer=a;
+    }
+    
+    public int getInteger()
+    {
+        int b=integer;
+        return b;//returna una copia di integer,cosí che non ne venga modificato il valore, se il suo intendo fosse quello di modificarlo, usa il metodo set;
+    }
+    
+    public void setInteger(int newInteger)
+    {
+        integer=newInteger;
+    }
+    private static final int toInt(char[] carattere)
+    {
+
+        int lunghezza=carattere.length;
+        int[] arrayInteri=new int[lunghezza];
+        
+        if(lunghezza > 0)
+        {
+            for(int i=0;i<lunghezza;i++)
+            {
+                switch(carattere[i])
+                {
+                    case '0':
+                        arrayInteri[i]=0;
+                        break;
+                    case '1':
+                        arrayInteri[i]=1;
+                        break;
+                    case '2':
+                        arrayInteri[i]=2;
+                        break;
+                    case '3':
+                        arrayInteri[i]=3;
+                        break;
+                    case '4':
+                        arrayInteri[i]=4;
+                        break;
+                    case '5':
+                        arrayInteri[i]=5;
+                        break;
+                    case '6':
+                        arrayInteri[i]=6;
+                        break;
+                    case '7':
+                        arrayInteri[i]=7;
+                        break;
+                    case '8':
+                        arrayInteri[i]=8;
+                        break;
+                     case '9':
+                        arrayInteri[i]=9;//in base al numero si riempie l'array
+                        break;
+
+                }
+            }
+            
+          int numeroTotale=numeroIntero(arrayInteri);//crea il numero
+          return numeroTotale;
+        }
+        else
+            return 0;
+        
+    }
+    
+    private static final int numeroIntero(int array[])
+    {
+        int numeroTotale=0;
+        for(int i=0;i<array.length;i++)
+        {
+            for(int j=0;j<array.length-i-1;j++)
+            {
+                array[i]*=10;
+            }
+        }
+        for(int i=0;i<array.length;i++)
+        {
+            numeroTotale+=array[i];
+        }
+        return numeroTotale;//il lavoro qui é corretto;
+    }
+    
+    private static char[] distruggiLettere(char[] array)
+    {
+        for(int i=0;i<array.length;i++)
+        {
+            switch(array[i])//trasforma tutti i caratteri che non siano numeri in spazi
+            {
+            case '0':
+                break;
+            case '1':
+                break;
+            case '2':
+                break;
+            case '3':
+                break;
+            case '4':
+                break;
+            case '5':
+                break;
+            case '6':
+                break;
+            case '7':
+                break;
+            case '8':
+                break;
+            case '9':
+                break;
+            default:
+                array[i]=' ';
+                break;
+            }
+            
+        }
+        
+        array=distruggiSpazi(array);//toglie gli spazi
+        return array;//il lavoro qui é corretto;
+    }
+    
+    private static char[] distruggiSpazi(char[] array)
+    {
+        int totaleSpazi=0;
+        for(int i=0;i<array.length;i++)//conta quanti spazi ci sono nell'array
+        {
+            if(array[i]==' ')
+            {
+                totaleSpazi++;
+            }
+            else;
+        }
+        int contatoreNuovoArray=0;
+        char[] nuovoArray=new char[array.length-totaleSpazi];
+        for(int i=0;i<array.length;i++)
+        {
+            if(array[i]==' ');
+            else{
+                nuovoArray[contatoreNuovoArray]=array[i];
+                contatoreNuovoArray++;
+            }
+        }
+            return nuovoArray;
+    }
+    
+    private static final boolean controllaOutOfBounds(int lunghezza, int i)
+    {
+        if(i+1<=lunghezza-1)
+        {
+            return false;
+        }
+        else
+            return true;//il lavoro qui é corretto;
+    }
+}
