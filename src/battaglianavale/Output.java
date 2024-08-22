@@ -30,11 +30,14 @@ public class Output extends JFrame
     public static enum statusPulsante {NON_COLPITO, ACQUA, NAVE, AFFONDATA};
     
     private qualePannello messaggio;
+    
+    private static String iconsPath;
 
-    public Output()
+    public Output(String iconPack)
     {
+        iconsPath = "Immagini/" + iconPack + "/";
         this.setSize(1080, 720);
-        this.setIconImage(new ImageIcon("Immagini/IconaFinestra.png").getImage());
+        this.setIconImage(new ImageIcon(iconsPath + "IconaFinestra.png").getImage());
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         PrimoPannello menu = new PrimoPannello();
         this.add(menu);
@@ -46,18 +49,22 @@ public class Output extends JFrame
     {
         JButton pulsante = new JButton();
         JLabel etichetta = new JLabel(testo, JLabel.CENTER);
+        // Set text color to white
+        etichetta.setForeground(Color.WHITE);
+        // Set background to transparent so that only the icon is visible
+        etichetta.setOpaque(false);
+        pulsante.setOpaque(false);
+
         pulsante.setLayout(new BorderLayout());
         pulsante.add(etichetta, BorderLayout.CENTER);
-        pulsante.setIcon(new ImageIcon("Immagini/PulsanteBaseNormale.png"));
+        pulsante.setIcon(new ImageIcon(iconsPath + "PulsanteBaseNormale.png"));
         pulsante.setActionCommand(actionCommand);
-        pulsante.setPreferredSize(new Dimension(109, 44));
-        pulsante.setMinimumSize(new Dimension(109, 44));
+        pulsante.setPreferredSize(new Dimension(120, 55));
+        pulsante.setMinimumSize(new Dimension(120, 55));
         pulsante.setBorderPainted(false);
 
         pulsante.setFocusable(active);
         pulsante.setEnabled(active);
-
-        pulsante.setBorderPainted(visible);
         pulsante.setContentAreaFilled(visible);
         pulsante.setVisible(visible);
 
@@ -66,25 +73,25 @@ public class Output extends JFrame
             @Override
             public void mouseEntered(MouseEvent me)
             {
-                pulsante.setIcon(new ImageIcon("Immagini/PulsanteBaseSelected.png"));
+                pulsante.setIcon(new ImageIcon(iconsPath + "PulsanteBaseSelected.png"));
             }
 
             @Override
             public void mouseExited(MouseEvent me)
             {
-                pulsante.setIcon(new ImageIcon("Immagini/PulsanteBaseNormale.png"));
+                pulsante.setIcon(new ImageIcon(iconsPath + "PulsanteBaseNormale.png"));
             }
 
             @Override
             public void mousePressed(MouseEvent e)
             {
-                pulsante.setIcon(new ImageIcon("Immagini/PulsanteBasePressed.png"));
+                pulsante.setIcon(new ImageIcon(iconsPath + "PulsanteBasePressed.png"));
             }
 
             @Override
             public void mouseReleased(MouseEvent e)
             {
-                pulsante.setIcon(new ImageIcon("Immagini/PulsanteBaseSelected.png"));
+                pulsante.setIcon(new ImageIcon(iconsPath + "PulsanteBaseSelected.png"));
             }
         });
         return pulsante;
@@ -123,7 +130,7 @@ public class Output extends JFrame
             pannelloPlay.setLayout(new GridBagLayout());
             pannelloPlay.setBackground(Color.WHITE);
             JLabel etichettaImmagine = new JLabel();
-            etichettaImmagine.setIcon(new ImageIcon("Immagini/NaveSfondo.jpg"));
+            etichettaImmagine.setIcon(new ImageIcon(iconsPath + "NaveSfondo.jpg"));
             etichettaImmagine.setLayout(new GridBagLayout());
             GridBagConstraints gbc = new GridBagConstraints();
             gbc.gridx = 0;
@@ -166,7 +173,7 @@ public class Output extends JFrame
                 this.setFocusPainted(false);
                 this.setBorderPainted(false);
                 this.setContentAreaFilled(false);
-                ImageIcon playbuttonSmall = new ImageIcon("Immagini/PlaybuttonSmall2.png");
+                ImageIcon playbuttonSmall = new ImageIcon(iconsPath + "PlaybuttonSmall2.png");
                 Dimension dimensione = new Dimension(49, 63);
                 this.setPreferredSize(dimensione);
                 this.setIcon(playbuttonSmall);
@@ -184,7 +191,7 @@ public class Output extends JFrame
             {
                 Dimension dimensione = new Dimension(205, 284);
                 this.setPreferredSize(dimensione);
-                ImageIcon playButtonBig = new ImageIcon("Immagini/PlaybuttonBigPressed3.png");
+                ImageIcon playButtonBig = new ImageIcon(iconsPath + "PlaybuttonBigPressed3.png");
                 this.setIcon(playButtonBig);
             }
 
@@ -193,7 +200,7 @@ public class Output extends JFrame
             {
                 Dimension dimensione = new Dimension(205, 284);
                 this.setPreferredSize(dimensione);
-                ImageIcon playButtonBig = new ImageIcon("Immagini/PlaybuttonBigNormal3.png");
+                ImageIcon playButtonBig = new ImageIcon(iconsPath + "PlaybuttonBigNormal3.png");
                 this.setIcon(playButtonBig);
             }
 
@@ -202,7 +209,7 @@ public class Output extends JFrame
             {
                 Dimension dimensione = new Dimension(205, 284);
                 this.setPreferredSize(dimensione);
-                ImageIcon playButtonBig = new ImageIcon("Immagini/PlaybuttonBigNormal3.png");
+                ImageIcon playButtonBig = new ImageIcon(iconsPath + "PlaybuttonBigNormal3.png");
                 this.setIcon(playButtonBig);
             }
 
@@ -211,7 +218,7 @@ public class Output extends JFrame
             {
                 Dimension dimensione = new Dimension(49, 63);
                 this.setPreferredSize(dimensione);
-                ImageIcon playbuttonSmall = new ImageIcon("Immagini/PlaybuttonSmall2.png");
+                ImageIcon playbuttonSmall = new ImageIcon(iconsPath + "PlaybuttonSmall2.png");
                 this.setIcon(playbuttonSmall);
             }
         }
@@ -345,17 +352,17 @@ public class Output extends JFrame
                 switch(immagine)
                 {
                     case 1:
-                        ImageIcon pulsanteComputer = new ImageIcon("Immagini/IconaComputer.png");
+                        ImageIcon pulsanteComputer = new ImageIcon(iconsPath + "IconaComputer.png");
                         dimensione = new Dimension(313, 263);
                         this.setIcon(pulsanteComputer);
                         break;
                     case 2:
-                        ImageIcon pulsanteGiocatore = new ImageIcon("Immagini/IconaPersona.png");
+                        ImageIcon pulsanteGiocatore = new ImageIcon(iconsPath + "IconaPersona.png");
                         dimensione = new Dimension(200, 334);
                         this.setIcon(pulsanteGiocatore);
                         break;
                     case 3:
-                        ImageIcon pulsanteEditor = new ImageIcon("Immagini/IconaEditor.png");
+                        ImageIcon pulsanteEditor = new ImageIcon(iconsPath + "IconaEditor.png");
                         dimensione = new Dimension(302, 236);
                         this.setIcon(pulsanteEditor);
                         break;
@@ -382,17 +389,17 @@ public class Output extends JFrame
                 switch(immagine)
                 {
                     case 1:
-                        ImageIcon pulsanteComputer = new ImageIcon("Immagini/IconaComputerPressed.png");
+                        ImageIcon pulsanteComputer = new ImageIcon(iconsPath + "IconaComputerPressed.png");
                         dimensione = new Dimension(303, 253);
                         this.setIcon(pulsanteComputer);
                         break;
                     case 2:
-                        ImageIcon pulsanteGiocatore = new ImageIcon("Immagini/IconaPersonaPressed.png");
+                        ImageIcon pulsanteGiocatore = new ImageIcon(iconsPath + "IconaPersonaPressed.png");
                         dimensione = new Dimension(193, 322);
                         this.setIcon(pulsanteGiocatore);
                         break;
                     case 3:
-                        ImageIcon pulsanteEditor = new ImageIcon("Immagini/IconaEditorPressed.png");
+                        ImageIcon pulsanteEditor = new ImageIcon(iconsPath + "IconaEditorPressed.png");
                         dimensione = new Dimension(289, 222);
                         this.setIcon(pulsanteEditor);
                         break;
@@ -409,17 +416,17 @@ public class Output extends JFrame
                 switch(immagine)
                 {
                     case 1:
-                        ImageIcon pulsanteComputer = new ImageIcon("Immagini/IconaComputer.png");
+                        ImageIcon pulsanteComputer = new ImageIcon(iconsPath + "IconaComputer.png");
                         dimensione = new Dimension(313, 263);
                         this.setIcon(pulsanteComputer);
                         break;
                     case 2:
-                        ImageIcon pulsanteGiocatore = new ImageIcon("Immagini/IconaPersona.png");
+                        ImageIcon pulsanteGiocatore = new ImageIcon(iconsPath + "IconaPersona.png");
                         dimensione = new Dimension(200, 334);
                         this.setIcon(pulsanteGiocatore);
                         break;
                     case 3:
-                        ImageIcon pulsanteEditor = new ImageIcon("Immagini/IconaEditor.png");
+                        ImageIcon pulsanteEditor = new ImageIcon(iconsPath + "IconaEditor.png");
                         dimensione = new Dimension(302, 236);
                         this.setIcon(pulsanteEditor);
                         break;
@@ -651,7 +658,7 @@ public class Output extends JFrame
             
             try
             {
-                tavolaDaMostrare = ImageIO.read(new File("Immagini/tavolaDaMostrare.png"));
+                tavolaDaMostrare = ImageIO.read(new File(iconsPath + "tavolaDaMostrare.png"));
             }
             catch(IOException e)
             {
@@ -1112,8 +1119,9 @@ public class Output extends JFrame
 
                     JLabel pannelloSelDifficolta = new JLabel();
                     pannelloSelDifficolta.setLayout(new BorderLayout());
-                    pannelloSelDifficolta.setIcon(new ImageIcon("Immagini/PannelloPulsantiPrimo.png"));
+                    pannelloSelDifficolta.setIcon(new ImageIcon(iconsPath + "PannelloPulsantiPrimo.png"));
                     JLabel selDifficolta = new JLabel("Seleziona difficoltà", JLabel.CENTER);
+                    selDifficolta.setForeground(Color.WHITE);
                     pannelloSelDifficolta.add(selDifficolta, BorderLayout.CENTER);
                     difficolta.addMouseListener(this);
                     dif1 = factoryPulsanteBase("Liv. 1", "1", true, false);
@@ -1154,19 +1162,29 @@ public class Output extends JFrame
                     //inizio seleziona chi gioca per primo
                     JPanel pannelloPrimo = new JPanel();
                     pannelloPrimo.setBackground(Color.WHITE);
-                    pannelloPrimo.setLayout(new BorderLayout());
+                    pannelloPrimo.setLayout(new FlowLayout());
                     JLabel contenitorePulsantiPrimo = new JLabel();
-                    contenitorePulsantiPrimo.setLayout(new FlowLayout());
-                    contenitorePulsantiPrimo.setIcon(new ImageIcon("Immagini/PannelloPulsantiPrimo.png"));
-                    contenitorePulsantiPrimo.setMaximumSize(new Dimension(235, 50));
+                    contenitorePulsantiPrimo.setLayout(new GridBagLayout());
+                    contenitorePulsantiPrimo.setIcon(new ImageIcon(iconsPath + "PannelloPulsantiPrimo.png"));
+                    contenitorePulsantiPrimo.setMaximumSize(new Dimension(268, 83));
 
                     pulsantePrimo = new JButton();
                     pulsantePrimo.setContentAreaFilled(false);
                     pulsantePrimo.setBorderPainted(false);
                     pulsantePrimo.setFocusable(false);
-                    pulsantePrimo.setLayout(new FlowLayout());
-                    pulsantePrimo.setIcon(new ImageIcon("Immagini/PulsantePrimoNormale.png"));
-                    pulsantePrimo.add(new JLabel("1°"));
+
+// Change the layout to GridBagLayout for proper centering
+                    pulsantePrimo.setLayout(new GridBagLayout());
+
+                    pulsantePrimo.setIcon(new ImageIcon(iconsPath + "PulsantePrimoNormale.png"));
+                    pulsantePrimo.setPreferredSize(new Dimension(66, 66));
+
+                    JLabel etichettaPrimo = new JLabel("1°", JLabel.CENTER);
+                    etichettaPrimo.setForeground(Color.WHITE);
+
+// Add the label to the button, GridBagLayout centers by default
+                    pulsantePrimo.add(etichettaPrimo, new GridBagConstraints());
+
                     pulsantePrimo.addActionListener(this);
                     pulsantePrimo.addMouseListener(this);
                     pulsantePrimo.setActionCommand("primo");
@@ -1175,9 +1193,17 @@ public class Output extends JFrame
                     pulsanteSecondo.setContentAreaFilled(false);
                     pulsanteSecondo.setBorderPainted(false);
                     pulsanteSecondo.setFocusable(false);
-                    pulsanteSecondo.setLayout(new FlowLayout());
-                    pulsanteSecondo.setIcon(new ImageIcon("Immagini/PulsantePrimoNormale.png"));
-                    pulsanteSecondo.add(new JLabel("2°"));
+
+                    pulsanteSecondo.setLayout(new GridBagLayout());
+
+                    pulsanteSecondo.setIcon(new ImageIcon(iconsPath + "PulsantePrimoNormale.png"));
+                    pulsanteSecondo.setPreferredSize(new Dimension(66, 66));
+
+                    JLabel etichettaSecondo = new JLabel("2°", JLabel.CENTER);
+                    etichettaSecondo.setForeground(Color.WHITE);
+
+                    pulsanteSecondo.add(etichettaSecondo, new GridBagConstraints());
+
                     pulsanteSecondo.addActionListener(this);
                     pulsanteSecondo.addMouseListener(this);
                     pulsanteSecondo.setActionCommand("secondo");
@@ -1187,7 +1213,7 @@ public class Output extends JFrame
                     pulsanteCasuale.setBorderPainted(false);
                     pulsanteCasuale.setFocusable(false);
                     pulsanteCasuale.setLayout(new FlowLayout());
-                    pulsanteCasuale.setIcon(new ImageIcon("Immagini/PulsanteDadoNormale.png"));
+                    pulsanteCasuale.setIcon(new ImageIcon(iconsPath + "PulsanteDadoNormale.png"));
                     pulsanteCasuale.setPreferredSize(new Dimension(42, 35));
                     pulsanteCasuale.setMinimumSize(pulsanteCasuale.getPreferredSize());
                     pulsanteCasuale.addActionListener(this);
@@ -1196,9 +1222,15 @@ public class Output extends JFrame
 
                     primo = chiGiocaPrimo.VALORE_INIZIALE;
 
-                    contenitorePulsantiPrimo.add(pulsantePrimo);
-                    contenitorePulsantiPrimo.add(pulsanteSecondo);
-                    contenitorePulsantiPrimo.add(pulsanteCasuale);
+                    GridBagConstraints gbc_pulsanti_primo = new GridBagConstraints();
+                    gbc_pulsanti_primo.gridx = 0;
+                    gbc_pulsanti_primo.gridy = 0;
+
+                    contenitorePulsantiPrimo.add(pulsantePrimo, new GridBagConstraints());
+                    gbc_pulsanti_primo.gridx = 1;
+                    contenitorePulsantiPrimo.add(pulsanteSecondo, gbc_pulsanti_primo);
+                    gbc_pulsanti_primo.gridx = 2;
+                    contenitorePulsantiPrimo.add(pulsanteCasuale,new GridBagConstraints());
 
                     pannelloPrimo.add(contenitorePulsantiPrimo, BorderLayout.CENTER);
                     gbc.gridx = 0;
@@ -1211,7 +1243,7 @@ public class Output extends JFrame
                 JPanel pannelloBrowsePacchetto = new JPanel();
                 pannelloBrowsePacchetto.setBackground(Color.WHITE);
                 JLabel pannelloPulsantiBello = new JLabel();
-                pannelloPulsantiBello.setIcon(new ImageIcon("Immagini/PannelloPulsantiPrimo.png"));
+                pannelloPulsantiBello.setIcon(new ImageIcon(iconsPath + "PannelloPulsantiPrimo.png"));
                 pannelloPulsantiBello.setLayout(new GridBagLayout());
                 browsePacchetto = factoryPulsanteBase("Pacchetto...", "seleziona", true, true);
                 browsePacchetto.addActionListener(this);
@@ -1409,11 +1441,11 @@ public class Output extends JFrame
             {
                 if((e.getSource().equals(pulsantePrimo)) || (e.getSource().equals(pulsanteSecondo)))
                 {
-                    ((JButton)e.getSource()).setIcon(new ImageIcon("Immagini/PulsantePrimoPressed.png"));
+                    ((JButton)e.getSource()).setIcon(new ImageIcon(iconsPath + "PulsantePrimoPressed.png"));
                 }
                 else if(e.getSource().equals(pulsanteCasuale))
                 {
-                    pulsanteCasuale.setIcon(new ImageIcon("Immagini/PulsanteDadoPressed.png"));
+                    pulsanteCasuale.setIcon(new ImageIcon(iconsPath + "PulsanteDadoPressed.png"));
                     pulsanteCasuale.setMinimumSize(new Dimension(35, 35));
                 }
             }
@@ -1423,11 +1455,11 @@ public class Output extends JFrame
             {
                 if((e.getSource().equals(pulsantePrimo)) || (e.getSource().equals(pulsanteSecondo)))
                 {
-                    ((JButton)e.getSource()).setIcon(new ImageIcon("Immagini/PulsantePrimoSelected.png"));
+                    ((JButton)e.getSource()).setIcon(new ImageIcon(iconsPath + "PulsantePrimoSelected.png"));
                 }
                 else if(e.getSource().equals(pulsanteCasuale))
                 {
-                    pulsanteCasuale.setIcon(new ImageIcon("Immagini/PulsanteDadoSelected.png"));
+                    pulsanteCasuale.setIcon(new ImageIcon(iconsPath + "PulsanteDadoSelected.png"));
                 }
             }
 
@@ -1442,11 +1474,11 @@ public class Output extends JFrame
                 }
                 else if((e.getSource().equals(pulsantePrimo)) || (e.getSource().equals(pulsanteSecondo)))
                 {
-                    ((JButton)e.getSource()).setIcon(new ImageIcon("Immagini/PulsantePrimoSelected.png"));
+                    ((JButton)e.getSource()).setIcon(new ImageIcon(iconsPath + "PulsantePrimoSelected.png"));
                 }
                 else if(e.getSource().equals(pulsanteCasuale))
                 {
-                    pulsanteCasuale.setIcon(new ImageIcon("Immagini/PulsanteDadoSelected.png"));
+                    pulsanteCasuale.setIcon(new ImageIcon(iconsPath + "PulsanteDadoSelected.png"));
                 }
             }
 
@@ -1461,11 +1493,11 @@ public class Output extends JFrame
                 }
                 else if((e.getSource().equals(pulsantePrimo)) || (e.getSource().equals(pulsanteSecondo)))
                 {
-                    ((JButton)e.getSource()).setIcon(new ImageIcon("Immagini/PulsantePrimoNormale.png"));
+                    ((JButton)e.getSource()).setIcon(new ImageIcon(iconsPath + "PulsantePrimoNormale.png"));
                 }
                 else if(e.getSource().equals(pulsanteCasuale))
                 {
-                    pulsanteCasuale.setIcon(new ImageIcon("Immagini/PulsanteDadoNormale.png"));
+                    pulsanteCasuale.setIcon(new ImageIcon(iconsPath + "PulsanteDadoNormale.png"));
                 }
             }
 
@@ -1492,10 +1524,10 @@ public class Output extends JFrame
                     {
                         if(selected)
                         {
-                            cartellaAperta = ImageIO.read(new File("Immagini/CartellaAperta.png"));
+                            cartellaAperta = ImageIO.read(new File(iconsPath + "CartellaAperta.png"));
                         }
                         else
-                            cartellaChiusa = ImageIO.read(new File("Immagini/CartellaChiusa.png"));
+                            cartellaChiusa = ImageIO.read(new File(iconsPath + "CartellaChiusa.png"));
                     }
                     catch(IOException e)
                     {
@@ -1669,7 +1701,7 @@ public class Output extends JFrame
 
                 try
                 {
-                    tavolaDaMostrare = ImageIO.read(new File("Immagini/tavolaDaMostrare.png"));
+                    tavolaDaMostrare = ImageIO.read(new File(iconsPath + "tavolaDaMostrare.png"));
                 }
                 catch(IOException e)
                 {
@@ -2024,7 +2056,7 @@ public class Output extends JFrame
 
                 try
                 {
-                    tavolaDaMostrare = ImageIO.read(new File("Immagini/tavolaDaMostrare.png"));
+                    tavolaDaMostrare = ImageIO.read(new File(iconsPath + "tavolaDaMostrare.png"));
                 }
                 catch(IOException e)
                 {
@@ -2297,15 +2329,15 @@ public class Output extends JFrame
                 {
                     case 1:
                         stringaVittoria = nomeGiocatore1 + ", complimenti, hai sconfitto la flotta di " + nomeGiocatore2;
-                        iconaVittoria = new ImageIcon("Immagini/CoppaG1.png");
+                        iconaVittoria = new ImageIcon(iconsPath + "CoppaG1.png");
                         break;
                     case 2:
                         stringaVittoria = nomeGiocatore2 + ", complimenti, hai sconfitto la flotta di " + nomeGiocatore1;
-                        iconaVittoria = new ImageIcon("Immagini/CoppaG2.png");
+                        iconaVittoria = new ImageIcon(iconsPath + "CoppaG2.png");
                         break;
                     case 3:
                         stringaVittoria = nomeGiocatore1 + ", mi dispiace, ma sei stato sconfitto dall'AI";
-                        iconaVittoria = new ImageIcon("Immagini/CoppaAI.png");
+                        iconaVittoria = new ImageIcon(iconsPath + "CoppaAI.png");
                         break;
                         
                 }
@@ -2399,7 +2431,7 @@ public class Output extends JFrame
                             
                             try
                             {
-                                imageAcqua = ImageIO.read(new File("Immagini/Acqua.png"));
+                                imageAcqua = ImageIO.read(new File(iconsPath + "Acqua.png"));
                             }
                             catch(IOException e)
                             {
@@ -2415,7 +2447,7 @@ public class Output extends JFrame
                             
                             try
                             {
-                                imageNaveColpita = ImageIO.read(new File("Immagini/NaveColpita.png"));
+                                imageNaveColpita = ImageIO.read(new File(iconsPath + "NaveColpita.png"));
                             }
                             catch(IOException e)
                             {
