@@ -9,20 +9,29 @@ Another valuable feature is the ship package editor.
 
 ## To run
 1 - Open your favourite Java IDE and import the project
+
 2 - Run the class BattagliaNavale.java (the main class)
 
 ## To play
 1 - Click on the play button
+
 2 - Choose the mode (vs Computer or 1vs1)
+
 3 - Select settings (difficulty, who starts, and ships package)
+
 4 - Click on the spot you want to fire your shot
 
 ## To create ships packages
 1 - Click on the play button
+
 2 - Choose "Editor navi"
+
 3 - Draw a shape in the table that follows the rules (no separated ships and not too big)
+
 4 - Click on "Conferma button"
+
 5 - Repeat 3-4 for 6 times, you will create 6 ships.
+
 6 - Save, click on "Salva".
 
 ## Gameplay
