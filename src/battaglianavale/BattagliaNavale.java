@@ -37,7 +37,7 @@ public class BattagliaNavale
      */
     public static void main(String[] args)
     {
-        Output frame = new Output();
+        Output frame = new Output("Modern");
         frame.setVisible(true);
     }
     
